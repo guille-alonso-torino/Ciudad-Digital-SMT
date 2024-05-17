@@ -8,6 +8,8 @@ function App() {
 
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
+ 
+  localStorage.setItem("destino",params.get("destino"));
   const reparti = params.get('rep');
   localStorage.setItem("reparticion", reparti? reparti : 1711);
 
