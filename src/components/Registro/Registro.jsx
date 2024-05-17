@@ -120,17 +120,17 @@ export const Registro = () => {
 
   const obtenerDatosDB = async () => {
     try {
-      const paisesDB = await cdigitalApi.get("/ciudadanoDigital/paises");
-      const provinciasDB = await cdigitalApi.get(
-        "/ciudadanoDigital/provincias"
-      );
+      // const paisesDB = await cdigitalApi.get("/ciudadanoDigital/paises");
+      // const provinciasDB = await cdigitalApi.get(
+      //   "/ciudadanoDigital/provincias"
+      // );
       const generosDB = await cdigitalApi.get("/ciudadanoDigital/genero");
-      const documentoDB = await cdigitalApi.get("/ciudadanoDigital/documento");
+      // const documentoDB = await cdigitalApi.get("/ciudadanoDigital/documento");
 
-      setPaises(paisesDB.data.ciudadanos);
-      setProvincias(provinciasDB.data.ciudadanos);
+      // setPaises(paisesDB.data.ciudadanos);
+      // setProvincias(provinciasDB.data.ciudadanos);
       setGeneros(generosDB.data.ciudadanos);
-      setTipoDocumento(documentoDB.data.ciudadanos);
+      // setTipoDocumento(documentoDB.data.ciudadanos);
     } catch (error) {
       console.log(error);
     }
@@ -499,10 +499,7 @@ const validarCuilUsuarioExistente=async(value)=>{
             <Form onSubmit={handleRegister} className="m-1 p-3 ">
               <Row>
                 <Col xs={12} md={6}>
-                  {paises.length == 0 ||
-                  provincias.length == 0 ||
-                  generos.length == 0 ||
-                  tipoDocumento.length == 0 ? (
+                  {generos.length == 0 ? (
                     <Skeleton count={5} height={40} className="esqueleto" />
                   ) : (
                     <div>
@@ -606,10 +603,8 @@ const validarCuilUsuarioExistente=async(value)=>{
                 </Col>
 
                 <Col xs={12} md={6}>
-                  {paises.length == 0 ||
-                  provincias.length == 0 ||
-                  generos.length == 0 ||
-                  tipoDocumento.length == 0 ? (
+                  {
+                  generos.length == 0 ? (
                     <Skeleton count={5} height={40} className="esqueleto" />
                   ) : (
                     <div>
