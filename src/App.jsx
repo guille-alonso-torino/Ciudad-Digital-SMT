@@ -14,6 +14,8 @@ function App() {
   localStorage.setItem("reparticion", reparti? reparti : 1711);
 
   url.searchParams.delete("logout");
+  url.searchParams.delete("destino");
+  url.searchParams.delete("rep");
   history.replaceState(null, '', url.toString());
 
   if(logout){

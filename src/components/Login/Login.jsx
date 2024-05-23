@@ -75,7 +75,7 @@ const Login = () => {
 
         const token = localStorage.getItem("token");
         const reparticion = localStorage.getItem("reparticion")
-        const url = new URL(`http://localhost:5174/`);
+        const url = new URL(`http://turnos.smt.gob.ar:90/`);
         url.searchParams.append("auth", token);
         url.searchParams.append("rep", reparticion);
         window.location.href = url.toString();

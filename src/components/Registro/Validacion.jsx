@@ -11,6 +11,7 @@ import { Button, Form, Modal, ModalBody, ModalFooter} from 'react-bootstrap';
 
 import cdigitalApi from '../../config/axios';
 import { useNavigate } from 'react-router-dom';
+import { ReenviarValidacion } from '../Login/ReenviarValidacion';
 
 
 
@@ -100,55 +101,65 @@ const ValidarCiudadanoDB = async () => {
 
      }
 
+  const [abrirModalReenviarValidacion, setAbrirModalReenviarValidacion] = useState(false)
+  const abrirModalReenviarEmailValidacion = ()=>{
+    setAbrirModalReenviarValidacion(true);
+  }
+
   return (
-    <>
-
-       
- <Modal  show={true} onHide={cerrarModal} backdrop="static" keyboard={false}>
+    <div>
 
 
- <Modal.Header    >
-          <Modal.Title>Le enviamos un email de validación a <strong>{datos.email_persona}</strong>  con un código de 4 dígitos</Modal.Title>
+      <Modal className={`${abrirModalReenviarValidacion ? "d-none":"d-block"}`} show={true} onHide={cerrarModal} backdrop="static" keyboard={false}>
+
+
+        <Modal.Header    >
+          <Modal.Title>Le enviamos un email de validación a <strong>{datos.email_persona}</strong>  con un código numérico</Modal.Title>
         </Modal.Header>
 
 
-<ModalBody>
-  <p>* Si no recibió el email revise la casilla de spam</p>
+        <ModalBody>
+          <p>* Si no recibió el email revise la casilla de spam</p>
 
-<Form  onSubmit={validar} className='m-1 p-3 '>
-  
-
-  <Form.Group className="mb-3" controlId="telefono">
-    <Form.Label> <strong>Código de validación</strong> </Form.Label>
-    <Form.Control
-      type="number"
-     
-      name="codigo_verif"
-      onChange={handleChange}
-       value={datos.codigo_verif}
-      required
-      
-    />
-  </Form.Group>
-
-<div className='text-center'>
-  <Button size='md' variant="primary" type="submit" className="w-50">
- Validar
-</Button>
-  </div>
- 
-  </Form>
+          <Form onSubmit={validar} className='m-1 p-3 '>
 
 
-</ModalBody>
+            <Form.Group className="mb-3" controlId="telefono">
+              <Form.Label> <strong>Código de validación</strong> </Form.Label>
+              <Form.Control
+                type="number"
 
-<ModalFooter>
+                name="codigo_verif"
+                onChange={handleChange}
+                value={datos.codigo_verif}
+                required
 
-</ModalFooter>
-    
- </Modal>
+              />
+            </Form.Group>
 
-    
-    </>
+            <div className='text-center'>
+              <Button size='md' variant="primary" type="submit" className="w-50">
+                Validar
+              </Button>
+            </div>
+
+          </Form>
+
+
+        </ModalBody>
+        <div className='text-center'>
+          <p className='punteroMouse' onClick={abrirModalReenviarEmailValidacion}>Si no recibió el email haga click aquí</p>
+        </div>
+
+        <ModalFooter>
+        </ModalFooter>
+
+      </Modal>
+
+      {
+        abrirModalReenviarValidacion &&
+        <ReenviarValidacion cerrarModal={cerrarModal} />
+      }
+    </div>
   )
 }

@@ -24,3 +24,10 @@ body {
 .css-yfo96e {
   padding: 0 !important;
 }
+
+.punteroMouse{
+  cursor: pointer;
+}
+.punteroMouse:hover{
+  color:#06377E ;
+}
