@@ -75,7 +75,8 @@ const Login = () => {
 
         const token = localStorage.getItem("token");
         const reparticion = localStorage.getItem("reparticion")
-        const url = new URL(`http://turnos.smt.gob.ar:90/`);
+        const url = new URL(`https://turnos.smt.gob.ar/`);
+        // const url = new URL(`http://181.105.6.205:91/`);
         url.searchParams.append("auth", token);
         url.searchParams.append("rep", reparticion);
         window.location.href = url.toString();
@@ -98,7 +99,7 @@ const Login = () => {
       // });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authenticated]);
+  }, [authenticated]);  
 
   useEffect(() => {
     if (errors !== "") {
