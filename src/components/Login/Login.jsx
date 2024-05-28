@@ -66,40 +66,54 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    if (authenticated) {
-      // navigate("/home");
+  // useEffect(() => {
+  //   if (authenticated) {
+  //     // navigate("/home");
 
-      // DERIVACIONES
-      if(localStorage.getItem("destino") == "turnero"){
+  //     // DERIVACIONES
+  //     if(localStorage.getItem("destino") == "turnero"){
 
-        const token = localStorage.getItem("token");
-        const reparticion = localStorage.getItem("reparticion")
-        const url = new URL(`https://turnos.smt.gob.ar/`);
-        // const url = new URL(`http://181.105.6.205:91/`);
-        url.searchParams.append("auth", token);
-        url.searchParams.append("rep", reparticion);
-        window.location.href = url.toString();
+  //       const token = localStorage.getItem("token");
+  //       const reparticion = localStorage.getItem("reparticion")
+  //       const destino = localStorage.getItem("destino");
 
-      }else if(localStorage.getItem("destino") == "google"){
-        const token = localStorage.getItem("token");
-        const url = new URL(`https://www.google.com/?hl=es`);
-        // url.searchParams.append("auth", token);
-        window.location.href = url.toString();
-      }else{
-        const token = localStorage.getItem("token");
-        const url = new URL(`https://smt.gob.ar/`);
-        url.searchParams.append("auth", token);
-        window.location.href = url.toString();
-      }
+  //       const url = new URL(`https://turnos.smt.gob.ar/`);
+  //       // const url = new URL(`http://181.105.6.205:91/`);
+  //       url.searchParams.append("auth", token);
+  //       url.searchParams.append("rep", reparticion);
+  //       url.searchParams.append("destino", destino);
+
+  //       window.location.href = url.toString();
+
+  //     }else if(localStorage.getItem("destino") == "google"){
+  //       const token = localStorage.getItem("token");
+  //       const url = new URL(`https://www.google.com/?hl=es`);
+  //       // url.searchParams.append("auth", token);
+  //       window.location.href = url.toString();
+  //     }else{
+  //       const token = localStorage.getItem("token");
+  //       const url = new URL(`https://smt.gob.ar/`);
+  //       url.searchParams.append("auth", token);
+  //       window.location.href = url.toString();
+  //     }
       
-      // localStorage.removeItem("token");
-      // set({
-      //   authenticated: false
-      // });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authenticated]);  
+  //     // if(localStorage.getItem("destino")){
+        
+  //     //   const token = localStorage.getItem("token");
+  //     //   const reparticion = localStorage.getItem("reparticion")
+  //     //   const destino = localStorage.getItem("destino");
+
+  //     //   const url = new URL(`https://${localStorage.getItem("destino")}.smt.gob.ar/`);
+  //     //   // const url = new URL(`http://181.105.6.205:91/`);
+  //     //   url.searchParams.append("auth", token);
+  //     //   url.searchParams.append("rep", reparticion);
+  //     //   url.searchParams.append("destino", destino);
+  //     //   window.location.href = url.toString();
+  //     // }
+  
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [authenticated]);  
 
   useEffect(() => {
     if (errors !== "") {

@@ -8,25 +8,29 @@ const PrivateRoute = ({ children }) => {
   const { getAuth, authenticated, loading } = useStore();
   
   useEffect(() => {
-    console.log("U1");
     getAuth();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
   
   useEffect(() => {
-    console.log("UE2");
+   
     if(localStorage.getItem("token")){
       if(localStorage.getItem("destino") == "turnero"){
-        console.log("cl token");
-  
+
         const token = localStorage.getItem("token");
         const reparticion = localStorage.getItem("reparticion")
+        const destino = localStorage.getItem("destino");
+
         const url = new URL(`https://turnos.smt.gob.ar/`);
         // const url = new URL(`http://181.105.6.205:91/`);
         url.searchParams.append("auth", token);
         url.searchParams.append("rep", reparticion);
+        url.searchParams.append("destino", destino);
+
+        console.log(url.toString()); 
+        console.log(destino);
         window.location.href = url.toString();
-  
+
       }else if(localStorage.getItem("destino") == "google"){
         const token = localStorage.getItem("token");
         const url = new URL(`https://www.google.com/?hl=es`);
@@ -40,7 +44,6 @@ const PrivateRoute = ({ children }) => {
       }
     }
   }, [authenticated])
-  
 
   return loading ? (
     <Box sx={{ display: "flex" }}>
@@ -49,8 +52,9 @@ const PrivateRoute = ({ children }) => {
   ) : !authenticated ? (
     children
   ) : (
-    <Navigate to="/login" />
-    // <></>
+    <Box sx={{ display: "flex" }}>
+    <CircularProgress />
+  </Box>
   );
 };
 

@@ -145,7 +145,7 @@ export const Registro = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-   
+    setFlagBoton(true);
     let diferenciaTiempo =
       maxDate.getTime() - formData.fecha_nacimiento_persona.getTime();
     let edad = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24 * 365));
@@ -157,6 +157,7 @@ export const Registro = () => {
     //   /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com|net|org|gov|edu|info)$/i;
 
     if (!cuilValidado) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -166,6 +167,7 @@ export const Registro = () => {
     }
 
     if (!patronEmail.test(formData.email_persona)) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -175,6 +177,7 @@ export const Registro = () => {
     }
     // ! Verificar que las contraseñas sean iguales
     if (formData.clave !== confirmarContraseña) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -184,6 +187,7 @@ export const Registro = () => {
     }
 
     if (formData.clave.length < 8) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -193,6 +197,7 @@ export const Registro = () => {
     }
 
     if (formData.clave.length > 25) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -202,6 +207,7 @@ export const Registro = () => {
     }
 
     if (!validarClave(formData.clave)) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -211,6 +217,7 @@ export const Registro = () => {
     }
 
     if (formData.documento_persona.length < 11) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -220,6 +227,7 @@ export const Registro = () => {
     }
 
     if (formData.telefono_persona < 0) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -229,6 +237,7 @@ export const Registro = () => {
     }
 
     if (formData.documento_persona < 0) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -238,6 +247,7 @@ export const Registro = () => {
     }
 
     if (formData.telefono_persona.length != 10) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -264,6 +274,7 @@ export const Registro = () => {
     // }
 
     if (formData.id_genero == 0) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -281,6 +292,7 @@ export const Registro = () => {
     // }
 
     if (edad < 14) {
+      setFlagBoton(false);
       return Swal.fire({
         icon: "error",
         title: "¡Ups!",
@@ -297,6 +309,7 @@ export const Registro = () => {
   
   
       if (resp2.data.ciudadano) {
+        setFlagBoton(false);
         return Swal.fire({
           icon: "error",
           title: "¡Ups!",
@@ -314,7 +327,7 @@ export const Registro = () => {
       });
     }
 
-    setFlagBoton(true);
+    // setFlagBoton(true);
 
     AgregarCiudadanoDB(formData);
 

@@ -47,8 +47,8 @@ const ValidarCiudadanoDB = async () => {
   
               setTimeout(() => {
                   //  navigate("/");
-                   window.location.reload();
-                  // window.location.href = `http://181.105.6.205:90/?rep=${localStorage.getItem("reparticion")}`;
+                  //  window.location.reload();
+                  window.location.href = `https://ciudaddigital.smt.gob.ar/?rep=${localStorage.getItem("reparticion")}&destino=${localStorage.getItem("destino")}`;
               }, 1500);
 
 
