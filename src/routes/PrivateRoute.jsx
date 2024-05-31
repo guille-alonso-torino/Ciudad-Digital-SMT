@@ -36,6 +36,14 @@ const PrivateRoute = ({ children }) => {
         const url = new URL(`https://www.google.com/?hl=es`);
         // url.searchParams.append("auth", token);
         window.location.href = url.toString();
+      }else if(localStorage.getItem("destino") == "boletin"){
+        const token = localStorage.getItem("token");
+        const destino = localStorage.getItem("destino");
+        const url = new URL(`https://boletinoficial.smt.gob.ar/`);
+        url.searchParams.append("auth", token);
+        url.searchParams.append("destino", destino);
+        window.location.href = url.toString();
+
       }else{
         const token = localStorage.getItem("token");
         const url = new URL(`https://smt.gob.ar/`);
