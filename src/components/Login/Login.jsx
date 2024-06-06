@@ -96,9 +96,9 @@ const Login = () => {
   //       url.searchParams.append("auth", token);
   //       window.location.href = url.toString();
   //     }
-      
+
   //     // if(localStorage.getItem("destino")){
-        
+
   //     //   const token = localStorage.getItem("token");
   //     //   const reparticion = localStorage.getItem("reparticion")
   //     //   const destino = localStorage.getItem("destino");
@@ -110,7 +110,7 @@ const Login = () => {
   //     //   url.searchParams.append("destino", destino);
   //     //   window.location.href = url.toString();
   //     // }
-  
+
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [authenticated]);  
@@ -126,10 +126,10 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center layoutHeight">
+    <div className="d-flex justify-content-center align-items-center layoutHeight fondoSMT">
       <div className="box">
         <span className="borderLine"></span>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className="formLogin">
           <img src={logoMuni} alt="logo Municipalidad" className="logoMuni" />
           <div className="inputBox w-100">
             <input
@@ -194,11 +194,11 @@ const Login = () => {
           </Button>
 
           <p className="datoPie mt-2 text-center ">¿Olvidó su clave? Haga click <a
-            onClick={abrirModal} style={{ cursor: 'pointer' }} 
+            onClick={abrirModal} style={{ cursor: 'pointer' }}
           ><strong>aquí</strong></a> </p>
 
-<p className="datoPie mb-3 text-center "> <a
-            onClick={abrirModal2} style={{ cursor: 'pointer' }} 
+          <p className="datoPie mb-3 text-center "> <a
+            onClick={abrirModal2} style={{ cursor: 'pointer' }}
           >Reenviar email de validación</a> </p>
 
           <div className="d-flex flex-column justify-content-center align-items-center">
@@ -212,6 +212,29 @@ const Login = () => {
           </div>
         </form>
       </div>
+        <div className="info col-4 position-absolute">
+          <h5 className="mb-5">Ciudad Digital
+            es una plataforma tecnológica que posibilita a los ciudadanos acceder de forma simple, en un único lugar y con una misma cuenta de usuario a los trámites y servicios digitales que brinda la ciudad de San Miguel de Tucumán</h5>
+          <p>
+            ¿Cómo me registro como Ciudadano Digital?
+            Es muy sencillo, solo debes completar este formulario con los siguientes datos: <br />
+            •	CUIL <br />
+            •	Nombres <br />
+            •	Apellidos <br />
+            •	Género <br />
+            •	Fecha de Nacimiento <br />
+            •	Correo Electrónico válido <br />
+            •	Teléfono Celular <br />
+            •	Clave de acceso <br />
+            •	Leer y Aceptar los Términos y Condiciones <br />
+          </p>
+          <p>
+            <b>
+              
+            Registrate y descubrí todos los servicios y beneficios de Ciudad Digital.
+            </b>
+          </p>
+        </div>
       {typeof errors == "string" ? (
         <Snackbar
           open={openSnackbar}
@@ -246,12 +269,12 @@ const Login = () => {
       )}
 
 
-{modalAbierto2 && (
+      {modalAbierto2 && (
         <ReenviarValidacion
 
           cerrarModal={cerrarModal2}
-         
-        
+
+
         />
       )}
 

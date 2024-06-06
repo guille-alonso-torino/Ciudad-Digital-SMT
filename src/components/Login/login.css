@@ -199,3 +199,21 @@ background-color: #0066ff !important;
    margin-top: 10 !important;
    color:#6495ED
 }
+.fondoSMT{
+   background-image: url(../../assets/fondosmt.png) !important;
+   background-position: -500px -360px;
+}
+.info{
+   left: 100px;
+}
+
+@media screen and (max-width: 1280px) {
+   .info {
+     display: none !important;
+   }
+ }
+@media screen and (min-width: 1280px) {
+   .box {
+     left: 700px  !important;
+   }
+ }

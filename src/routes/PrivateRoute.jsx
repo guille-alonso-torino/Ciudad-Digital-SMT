@@ -44,6 +44,13 @@ const PrivateRoute = ({ children }) => {
         url.searchParams.append("destino", destino);
         window.location.href = url.toString();
 
+      }else if(localStorage.getItem("destino") == "catastro"){
+        const token = localStorage.getItem("token");
+        const destino = localStorage.getItem("destino");
+        const url = new URL(`https://catastro.smt.gob.ar/`);
+        url.searchParams.append("auth", token);
+        url.searchParams.append("destino", destino);
+        window.location.href = url.toString();
       }else{
         const token = localStorage.getItem("token");
         const url = new URL(`https://smt.gob.ar/`);
