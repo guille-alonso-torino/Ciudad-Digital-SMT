@@ -51,6 +51,13 @@ const PrivateRoute = ({ children }) => {
         url.searchParams.append("auth", token);
         url.searchParams.append("destino", destino);
         window.location.href = url.toString();
+      }else if(localStorage.getItem("destino") == "gaf"){
+        const token = localStorage.getItem("token");
+        const destino = localStorage.getItem("destino");
+        const url = new URL(`http://172.16.8.125:85`);
+        url.searchParams.append("auth", token);
+        url.searchParams.append("destino", destino);
+        window.location.href = url.toString();
       }else{
         const token = localStorage.getItem("token");
         const url = new URL(`https://smt.gob.ar/`);
@@ -59,6 +66,27 @@ const PrivateRoute = ({ children }) => {
       }
     }
   }, [authenticated])
+
+  // useEffect(() => {
+   
+  //   if(localStorage.getItem("token") && localStorage.getItem("destino")){
+      
+  //     const token = localStorage.getItem("token");
+  //     const reparticion = localStorage.getItem("reparticion")
+  //     const destino = localStorage.getItem("destino");
+
+  //     const url = new URL(`https://${destino}.smt.gob.ar/`);
+  //     url.searchParams.append("auth", token);
+  //     url.searchParams.append("rep", reparticion);
+  //     url.searchParams.append("destino", destino);
+
+  //     window.location.href = url.toString();
+  //   }else{
+
+  //     const url = new URL(`https://smt.gob.ar/`);
+  //     window.location.href = url.toString();
+  //   }
+  // }, [authenticated])
 
   return loading ? (
     <Box sx={{ display: "flex" }}>
